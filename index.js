@@ -4,7 +4,7 @@ Project name: Notepad
 Programmer: Elijah Wiencek
 Started on: 2026-05-24
 Finished: 2026-10-11
-Description: A typewriter-like experiment made to function in Geometry Dash!
+Description: Fiddle around with a 70-character notepad!
 
 Resources I used to help with my coding:
 https://g-js-api.github.io/G.js/
