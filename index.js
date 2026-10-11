@@ -491,7 +491,7 @@ for (let charsetIndex = 1; charsetIndex <= 71; charsetIndex++)
         GLOW_DISABLED: true,
         135: true, // Hide
         X: 2595 + ((charsetIndex - 1) % 28) * 30,
-        Y: 3135 - Math.floor((charsetIndex - 1) / 28) * 30,
+        Y: 3225 - Math.floor((charsetIndex - 1) / 28) * 30,
         GROUPS: [group(9529 + charsetIndex - 1)]
     }));
 }
@@ -512,7 +512,7 @@ for (let charsetIndex = 1; charsetIndex <= 70; charsetIndex++)
             Z_LAYER: B5,
             COLOR: color(1),
             X: 945 + 1650 + ((charsetIndex - 1) % 28) * 30,
-            Y: 1665 + 1455 + 15 - Math.floor((charsetIndex - 1) / 28) * 30,
+            Y: 1665 + 90 + 1455 + 15 - Math.floor((charsetIndex - 1) / 28) * 30,
             SCALE_X: 1,
             SCALE_Y: 1,
             TEXT: Buffer.from(charset[charIndex - 1]).toString("base64"),
@@ -624,7 +624,7 @@ for (let charIndex = 1; charIndex <= 68; charIndex++)
         Z_LAYER: B5,
         COLOR: color(1),
         X: 2595,
-        Y: 3135,
+        Y: 3225,
         SCALE_X: 1,
         SCALE_Y: 1,
         TEXT: Buffer.from(charset[charIndex - 1]).toString("base64"),
@@ -1973,4 +1973,26 @@ $.add(trigger({
     SPAWN_TRIGGERED: true,
     MULTI_TRIGGER: true,
     GROUPS: [group(9982), group(9984)]
+}));
+
+
+
+
+
+
+// Instructions text
+$.add(object({
+    OBJ_ID: 914,
+    DONT_FADE: true,
+    DONT_ENTER: true,
+    GLOW_DISABLED: true,
+    X: 3000,
+    Y: 2875,
+    SCALE_X: 1.125,
+    SCALE_Y: 1.125,
+    Z_LAYER: B5,
+    Z_ORDER: 100,
+    COLOR: color(1),
+    GROUPS: [group(9987)],
+    TEXT: Buffer.from("Instructions:\n\nP1 Left - Backspace\nP1 Right - Space\nP1 Jump - Enter key\n\nP2 Left - Change to the preceding character\nP2 Right - Change to the following character\nP2 Jump - Finish the level (must wait at least 60 seconds!)").toString("base64")
 }));
