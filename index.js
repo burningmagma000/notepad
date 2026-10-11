@@ -119,7 +119,7 @@ $.add(trigger({
     OBJ_ID: 1934,
     DONT_FADE: true,
     DONT_ENTER: true,
-    406: 0.50, // Volume
+    406: 0.35, // Volume
     404: 0, // Speed
     432: 0, // Song channel
     413: true, // Looping enabled
@@ -193,6 +193,102 @@ $.add(trigger({
     36: 1
 }));
 
+// Horizontal line color
+$.add(trigger({
+    OBJ_ID: 899,
+    DONT_FADE: true,
+    DONT_ENTER: true,
+    GLOW_DISABLED: true,
+    BLENDING: false,
+    DURATION: 0,
+    OPACITY: 1,
+    TRIGGER_RED: 40,
+    TRIGGER_GREEN: 10,
+    TRIGGER_BLUE: 10,
+    TARGET_COLOR: color(3),
+    36: 1
+}));
+// Horizontal lines
+for (let yValueOfHorizontalLine = 2700; yValueOfHorizontalLine <= 3240; yValueOfHorizontalLine += 30)
+{
+    $.add(object({
+        OBJ_ID: 211,
+        DONT_FADE: true,
+        DONT_ENTER: true,
+        GLOW_DISABLED: true,
+        X: 3000,
+        Y: yValueOfHorizontalLine,
+        SCALE_X: 32,
+        SCALE_Y: 0.075,
+        COLOR: color(3),
+        Z_LAYER: B5,
+        Z_ORDER: 1
+    }));
+}
+
+// Margin line (vertical) color
+$.add(trigger({
+    OBJ_ID: 899,
+    DONT_FADE: true,
+    DONT_ENTER: true,
+    GLOW_DISABLED: true,
+    BLENDING: false,
+    DURATION: 0,
+    OPACITY: 1,
+    TRIGGER_RED: 10,
+    TRIGGER_GREEN: 40,
+    TRIGGER_BLUE: 40,
+    TARGET_COLOR: color(4),
+    36: 1
+}));
+// Margin line (vertical)
+$.add(object({
+    OBJ_ID: 211,
+    DONT_FADE: true,
+    DONT_ENTER: true,
+    GLOW_DISABLED: true,
+    X: 2580,
+    Y: 3000,
+    SCALE_X: 0.075,
+    SCALE_Y: 21.375,
+    COLOR: color(4),
+    Z_LAYER: B5,
+    Z_ORDER: 2
+}));
+
+// 3 holes color
+$.add(trigger({
+    OBJ_ID: 899,
+    DONT_FADE: true,
+    DONT_ENTER: true,
+    GLOW_DISABLED: true,
+    BLENDING: false,
+    DURATION: 0,
+    OPACITY: 1,
+    TRIGGER_RED: 50,
+    TRIGGER_GREEN: 50,
+    TRIGGER_BLUE: 50,
+    TARGET_COLOR: color(5),
+    36: 1
+}));
+// 3 holes
+for (let yValueOfHole = 2782.5; yValueOfHole <= 3217.5; yValueOfHole += 217.5)
+{
+    $.add(object({
+        OBJ_ID: 3802,
+        DONT_FADE: true,
+        DONT_ENTER: true,
+        GLOW_DISABLED: true,
+        X: 2545,
+        Y: yValueOfHole,
+        SCALE_X: 1,
+        SCALE_Y: 1,
+        COLOR: color(5),
+        Z_LAYER: B4,
+        Z_ORDER: 3
+    }));
+}
+
 // Switches the BG style to a plain color just in case I change my mind about having the BG black
 $.add(trigger({
     OBJ_ID: 3029,
@@ -233,17 +329,17 @@ $.add(trigger({
     194: false // Clamp RGB option
 }));
 
-// Filters the invert color effect to only apply between the BG layer & B5 layer
+// Filters the invert color effect to only apply between the BG layer & B4 layer
 $.add(trigger({
     OBJ_ID: 2904,
     DONT_FADE: true,
     DONT_ENTER: true,
     GLOW_DISABLED: true,
     196: 0, // Bottom layer (BG)
-    197: 3 // Top layer (B5)
+    197: 4 // Top layer (B4)
 }));
 
-// Black rectangle BG
+// Black rectangle
 $.add(object({
     OBJ_ID: 211,
     DONT_FADE: true,
@@ -621,7 +717,7 @@ for (let charIndex = 1; charIndex <= 68; charIndex++)
         DONT_FADE: true,
         DONT_ENTER: true,
         GLOW_DISABLED: true,
-        Z_LAYER: B5,
+        Z_LAYER: B4,
         COLOR: color(1),
         X: 2595,
         Y: 3225,
@@ -753,7 +849,7 @@ let previewCharacterSetBlinkInterval = 0.5;
 $.add(trigger({
     OBJ_ID: 1007,
     TARGET: group(9981),
-    OPACITY: 0.5,
+    OPACITY: 0.67,
     DURATION: 0,
     SPAWN_TRIGGERED: true,
     MULTI_TRIGGER: true,
@@ -814,15 +910,23 @@ $.add(trigger({
     GROUPS: [group(9805)]
 }));
 
-// This spawn trigger starts the blinking loop again
-
+// This spawn trigger starts the blinking loop again (with a small delay of 0.0050s to guarantee it starts on low-end devices such as my iPad 11)
 $.add(trigger({
     OBJ_ID: 1268,
-    SPAWN_DURATION: 0.0001,
-    TARGET: group(9877),
+    SPAWN_DURATION: 0.0050,
+    TARGET: group(9988),
     SPAWN_TRIGGERED: true,
     MULTI_TRIGGER: true,
     GROUPS: [group(9805)]
+}));
+
+$.add(trigger({
+    OBJ_ID: 1268,
+    SPAWN_DURATION: 0,
+    TARGET: group(9877),
+    SPAWN_TRIGGERED: true,
+    MULTI_TRIGGER: true,
+    GROUPS: [group(9988)]
 }));
 
 
@@ -1609,7 +1713,7 @@ $.add(trigger({
     GROUPS: [group(9970)]
 }));
 
-// Item ID 71 (the position of the preview character set is decremented by 1
+// Item ID 71 (the position of the preview character set is decremented by 1)
 $.add(trigger({
     OBJ_ID: 3619,
     ITEM_TARGET: 71,
@@ -1892,6 +1996,28 @@ $.add(trigger({
     COUNT_MULTI_ACTIVATE: true
 }));
 
+// When Item ID 78 is equal to 1 (P2 Jump Push is executed), Group 9,987 is spawned
+$.add(trigger({
+    OBJ_ID: 1611,
+    DONT_FADE: true,
+    DONT_ENTER: true,
+    GLOW_DISABLED: true,
+    ITEM: 78,
+    COUNT: 1,
+    TARGET: group(9987),
+    ACTIVATE_GROUP: true,
+    COUNT_MULTI_ACTIVATE: true
+}));
+
+
+
+
+
+
+
+
+
+
 // Group 9,982 - increments the value of the preview character set by 1 (shows the next possible character that can be typed), unless it reaches ` (character 68 of 68)
 $.add(trigger({
     OBJ_ID: 3620,
@@ -1988,11 +2114,455 @@ $.add(object({
     GLOW_DISABLED: true,
     X: 3000,
     Y: 2875,
-    SCALE_X: 1.125,
-    SCALE_Y: 1.125,
-    Z_LAYER: B5,
+    SCALE_X: 1,
+    SCALE_Y: 1,
+    Z_LAYER: B4,
     Z_ORDER: 100,
     COLOR: color(1),
-    GROUPS: [group(9987)],
+    HVS_ENABLED: true,
+    HVS: hsv(0, 1, 0.25),
     TEXT: Buffer.from("Instructions:\n\nP1 Left - Backspace\nP1 Right - Space\nP1 Jump - Enter key\n\nP2 Left - Change to the preceding character\nP2 Right - Change to the following character\nP2 Jump - Finish the level (must wait at least 60 seconds!)").toString("base64")
+}));
+
+// "Notepad" by burningmagma text
+$.add(object({
+    OBJ_ID: 914,
+    DONT_FADE: true,
+    DONT_ENTER: true,
+    GLOW_DISABLED: true,
+    X: 3000,
+    Y: 3273.75,
+    SCALE_X: 1.375,
+    SCALE_Y: 1.375,
+    Z_LAYER: B4,
+    Z_ORDER: 100,
+    COLOR: color(1),
+    TEXT: Buffer.from("\"Notepad\" by burningmagma").toString("base64")
+}));
+
+// Time counter text
+$.add(object({
+    OBJ_ID: 1615,
+    DONT_FADE: true,
+    DONT_ENTER: true,
+    GLOW_DISABLED: true,
+    X: 3309,
+    Y: 3015,
+    SCALE_X: 1,
+    SCALE_Y: 1,
+    Z_LAYER: B4,
+    Z_ORDER: 100,
+    COLOR: color(1),
+    HVS_ENABLED: true,
+    HVS: hsv(0, 1, 0.25),
+    GROUPS: [group(9994)],
+    390: -2, // Label special (0 - unset, main time - -1, points - -2, attempts - -3)
+    391: 1 // Label align (0 - unset, 1 - left, 2 - right)
+}));
+$.add(object({
+    OBJ_ID: 1615,
+    DONT_FADE: true,
+    DONT_ENTER: true,
+    GLOW_DISABLED: true,
+    X: 3309,
+    Y: 3015,
+    SCALE_X: 1,
+    SCALE_Y: 1,
+    Z_LAYER: B4,
+    Z_ORDER: 100,
+    COLOR: color(1),
+    HVS_ENABLED: true,
+    HVS: hsv(0, 1, 0.25),
+    GROUPS: [group(9993)],
+    80: 82,
+    391: 1
+}));
+$.add(object({
+    OBJ_ID: 914,
+    DONT_FADE: true,
+    DONT_ENTER: true,
+    GLOW_DISABLED: true,
+    X: 3119.75,
+    Y: 3015,
+    SCALE_X: 1,
+    SCALE_Y: 1,
+    Z_LAYER: B4,
+    Z_ORDER: 100,
+    COLOR: color(1),
+    HVS_ENABLED: true,
+    HVS: hsv(0, 1, 0.25),
+    TEXT: Buffer.from("Time passed (in seconds):").toString("base64")
+}));
+
+// Character amount text
+$.add(object({
+    OBJ_ID: 1615,
+    DONT_FADE: true,
+    DONT_ENTER: true,
+    GLOW_DISABLED: true,
+    X: 3363.875,
+    Y: 3150,
+    SCALE_X: 1,
+    SCALE_Y: 1,
+    Z_LAYER: B4,
+    Z_ORDER: 100,
+    COLOR: color(2),
+    HVS_ENABLED: true,
+    HVS: hsv(0, 1, 0.25),
+    80: 71, // Item ID displayed
+    391: 2 // Label align (0 - unset, 1 - left, 2 - right)
+}));
+$.add(object({
+    OBJ_ID: 914,
+    DONT_FADE: true,
+    DONT_ENTER: true,
+    GLOW_DISABLED: true,
+    X: 3390,
+    Y: 3150,
+    SCALE_X: 1,
+    SCALE_Y: 1,
+    Z_LAYER: B4,
+    Z_ORDER: 100,
+    COLOR: color(2),
+    HVS_ENABLED: true,
+    HVS: hsv(0, 1, 0.25),
+    TEXT: Buffer.from("/70").toString("base64")
+}));
+
+// The character amount text is initialized as white (becomes black after inversion)
+$.add(trigger({
+    OBJ_ID: 899,
+    DONT_FADE: true,
+    DONT_ENTER: true,
+    GLOW_DISABLED: true,
+    BLENDING: true,
+    DURATION: 0,
+    OPACITY: 1,
+    TRIGGER_RED: 255,
+    TRIGGER_GREEN: 255,
+    TRIGGER_BLUE: 255,
+    TARGET_COLOR: color(2),
+    36: 1
+}));
+
+// If there are 61+ characters filled, then the character amount text will become cyan (becomes red after inversion)
+$.add(trigger({
+    OBJ_ID: 3620,
+    ITEM_ID_1: 71,
+    TYPE_1: ITEM,
+    COMP_OP: GREATER_OR_EQ,
+    MOD: 1,
+    MOD_2: 61,
+    COMP_OP_1: MUL,
+    COMP_OP_2: MUL,
+    TRUE_ID: group(9989),
+    FALSE_ID: group(9990),
+    DONT_FADE: true,
+    DONT_ENTER: true,
+    GLOW_DISABLED: true,
+    SPAWN_TRIGGERED: true,
+    MULTI_TRIGGER: true,
+    GROUPS: [group(9804)]
+}));
+
+// Cyan color (Item ID 71 >= 61)
+$.add(trigger({
+    OBJ_ID: 899,
+    BLENDING: true,
+    DURATION: 0,
+    OPACITY: 1,
+    TRIGGER_RED: 0,
+    TRIGGER_GREEN: 255,
+    TRIGGER_BLUE: 255,
+    TARGET_COLOR: color(2),
+    36: 1,
+    SPAWN_TRIGGERED: true,
+    MULTI_TRIGGER: true,
+    GROUPS: [group(9989)]
+}));
+
+// White color (Item ID 71 < 61)
+$.add(trigger({
+    OBJ_ID: 899,
+    BLENDING: true,
+    DURATION: 0,
+    OPACITY: 1,
+    TRIGGER_RED: 255,
+    TRIGGER_GREEN: 255,
+    TRIGGER_BLUE: 255,
+    TARGET_COLOR: color(2),
+    36: 1,
+    SPAWN_TRIGGERED: true,
+    MULTI_TRIGGER: true,
+    GROUPS: [group(9990)]
+}));
+
+
+
+
+
+// Point increment loop (1-second interval)
+$.add(trigger({
+    OBJ_ID: 1268,
+    DONT_FADE: true,
+    DONT_ENTER: true,
+    GLOW_DISABLED: true,
+    SPAWN_DURATION: 1,
+    TARGET: group(9991),
+    SPAWN_TRIGGERED: true,
+    MULTI_TRIGGER: false,
+    GROUPS: [group(9524)]
+}));
+
+$.add(trigger({
+    OBJ_ID: 3619,
+    478: 3,
+    TYPE_1: NONE,
+    TYPE_2: NONE,
+    ASSIGN_OP: ADD,
+    OP_1: ADD,
+    OP_2: MUL,
+    MOD: 1,
+    SPAWN_TRIGGERED: true,
+    MULTI_TRIGGER: true,
+    GROUPS: [group(9991)]
+}));
+
+$.add(trigger({
+    OBJ_ID: 1268,
+    DONT_FADE: true,
+    DONT_ENTER: true,
+    GLOW_DISABLED: true,
+    SPAWN_DURATION: 1,
+    TARGET: group(9991),
+    SPAWN_TRIGGERED: true,
+    MULTI_TRIGGER: true,
+    GROUPS: [group(9991)]
+}));
+
+// Point value - initialized as 0
+$.add(trigger({
+    OBJ_ID: 3619,
+    478: 3,
+    TYPE_1: NONE,
+    TYPE_2: NONE,
+    ASSIGN_OP: EQ,
+    OP_1: ADD,
+    OP_2: MUL,
+    MOD: 0,
+    SPAWN_TRIGGERED: true,
+    MULTI_TRIGGER: false,
+    GROUPS: [group(9524)]
+}));
+
+// Toggles off the point display
+$.add(trigger({
+    OBJ_ID: 1049,
+    ACTIVATE_GROUP: false,
+    SPAWN_TRIGGERED: true,
+    MULTI_TRIGGER: false,
+    TARGET: group(9994),
+    GROUPS: [group(9524)]
+}));
+
+// A 1-second delay is applied to toggle off the empty Item ID 82 display
+$.add(trigger({
+    OBJ_ID: 1268,
+    DONT_FADE: true,
+    DONT_ENTER: true,
+    GLOW_DISABLED: true,
+    SPAWN_DURATION: 1,
+    TARGET: group(9995),
+    SPAWN_TRIGGERED: true,
+    MULTI_TRIGGER: false,
+    GROUPS: [group(9524)]
+}));
+
+// Toggles off the empty Item ID 82 display
+$.add(trigger({
+    OBJ_ID: 1049,
+    ACTIVATE_GROUP: false,
+    SPAWN_TRIGGERED: true,
+    MULTI_TRIGGER: true,
+    TARGET: group(9993),
+    GROUPS: [group(9995)]
+}));
+
+// Toggles back on the point display
+$.add(trigger({
+    OBJ_ID: 1049,
+    ACTIVATE_GROUP: true,
+    SPAWN_TRIGGERED: true,
+    MULTI_TRIGGER: true,
+    TARGET: group(9994),
+    GROUPS: [group(9995)]
+}));
+
+
+
+
+
+
+// Group 9,987 - Checks whether 60 seconds after spawning Group 9,524 have passed
+$.add(trigger({
+    OBJ_ID: 3620,
+    TYPE_1: 3,
+    COMP_OP: GREATER_OR_EQ,
+    MOD: 1,
+    MOD_2: 60,
+    COMP_OP_1: MUL,
+    COMP_OP_2: MUL,
+    TRUE_ID: group(9992),
+    FALSE_ID: group(9996),
+    DONT_FADE: true,
+    DONT_ENTER: true,
+    GLOW_DISABLED: true,
+    SPAWN_TRIGGERED: true,
+    MULTI_TRIGGER: true,
+    GROUPS: [group(9987)]
+}));
+
+
+
+
+
+// Group 9,992 (True condition of Group 9,987) - Ends the level
+$.add(trigger({ // End trigger - Spawns Group 9,992 at activation (the triggers used to stop SFX, the song, etc.)
+    OBJ_ID: 3600,
+    DONT_FADE: true,
+    DONT_ENTER: true,
+    GLOW_DISABLED: true,
+    TARGET: group(9998),
+    NO_EFFECTS: true,
+    NO_SFX: true,
+    INSTANT_END: true,
+    SPAWN_TRIGGERED: true,
+    MULTI_TRIGGER: false,
+    GROUPS: [group(9992)]
+}));
+
+$.add(trigger({ // Input is disabled
+    OBJ_ID: 3619,
+    ITEM_TARGET: 79,
+    ITEM_TARGET_TYPE: ITEM,
+    TYPE_1: NONE,
+    TYPE_2: NONE,
+    ASSIGN_OP: EQ,
+    OP_1: ADD,
+    OP_2: MUL,
+    MOD: 0,
+    SPAWN_TRIGGERED: true,
+    MULTI_TRIGGER: true,
+    GROUPS: [group(9998)]
+}));
+
+$.add(trigger({ // Stops the preview character set blink loop
+    OBJ_ID: 1616,
+    TARGET: group(9877),
+    SPAWN_TRIGGERED: true,
+    MULTI_TRIGGER: true,
+    GROUPS: [group(9998)]
+}));
+
+$.add(trigger({ // Stops the preview character set blink loop
+    OBJ_ID: 1616,
+    TARGET: group(9878),
+    SPAWN_TRIGGERED: true,
+    MULTI_TRIGGER: true,
+    GROUPS: [group(9998)]
+}));
+
+$.add(trigger({ // Stops the point increment loop
+    OBJ_ID: 1616,
+    TARGET: group(9991),
+    SPAWN_TRIGGERED: true,
+    MULTI_TRIGGER: true,
+    GROUPS: [group(9998)]
+}));
+
+$.add(trigger({ // Stops and mutes SFX Group 1
+    OBJ_ID: 3603,
+    DONT_FADE: true,
+    DONT_ENTER: true,
+    GLOW_DISABLED: true,
+    SFX_GROUP: 1,
+    SONG_VOLUME: 0,
+    CHANGE_VOLUME: true,
+    SONG_STOP: true,
+    SPAWN_TRIGGERED: true,
+    MULTI_TRIGGER: true,
+    GROUPS: [group(9998)]
+}));
+
+$.add(trigger({ // Stops and mutes SFX Group 2
+    OBJ_ID: 3603,
+    DONT_FADE: true,
+    DONT_ENTER: true,
+    GLOW_DISABLED: true,
+    SFX_GROUP: 2,
+    SONG_VOLUME: 0,
+    CHANGE_VOLUME: true,
+    SONG_STOP: true,
+    SPAWN_TRIGGERED: true,
+    MULTI_TRIGGER: true,
+    GROUPS: [group(9998)]
+}));
+
+$.add(trigger({ // Stops and mutes the Song
+    OBJ_ID: 3605,
+    DONT_FADE: true,
+    DONT_ENTER: true,
+    GLOW_DISABLED: true,
+    SONG_VOLUME: 0,
+    CHANGE_VOLUME: true,
+    SONG_STOP: true,
+    SPAWN_TRIGGERED: true,
+    MULTI_TRIGGER: true,
+    GROUPS: [group(9998)]
+}));
+
+$.add(trigger({ // Makes the black rectangle visible again
+    OBJ_ID: 1007,
+    TARGET: group(9526),
+    OPACITY: 1,
+    DURATION: 0,
+    GROUPS: [group(9998)],
+    SPAWN_TRIGGERED: true,
+    MULTI_TRIGGER: true
+}));
+
+
+
+
+
+// Group 9,996 (False condition of Group 9,987) - Plays a buzzer SFX indicating you can't complete the level yet
+$.add(trigger({
+    OBJ_ID: 3603,
+    DONT_FADE: true,
+    DONT_ENTER: true,
+    GLOW_DISABLED: true,
+    SFX_GROUP: 2,
+    SONG_STOP: true,
+    SPAWN_TRIGGERED: true,
+    MULTI_TRIGGER: true,
+    GROUPS: [group(9996)]
+}));
+
+$.add(trigger({
+    OBJ_ID: 1268,
+    SPAWN_DURATION: 0.0050,
+    TARGET: group(9997),
+    SPAWN_TRIGGERED: true,
+    MULTI_TRIGGER: true,
+    GROUPS: [group(9996)]
+}));
+
+$.add(trigger({
+    OBJ_ID: 3602,
+    SPAWN_TRIGGERED: true,
+    MULTI_TRIGGER: true,
+    GROUPS: [group(9997)],
+    SFX_ID: 14061,
+    SFX_GROUP: 2,
+    SONG_VOLUME: 0.40
 }));
