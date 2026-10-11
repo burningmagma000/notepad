@@ -370,6 +370,19 @@ $.add(trigger({
     GROUPS: [group(9528)],
 }));
 
+// Stops the Notification SFX
+$.add(trigger({
+    OBJ_ID: 3603,
+    DONT_FADE: true,
+    DONT_ENTER: true,
+    GLOW_DISABLED: true,
+    SFX_GROUP: 1,
+    SONG_STOP: true,
+    SPAWN_TRIGGERED: true,
+    MULTI_TRIGGER: false,
+    GROUPS: [group(9528)]
+}));
+
 // Clears every character set at initialization
 $.add(trigger({
     OBJ_ID: 1268,
@@ -459,9 +472,10 @@ $.add(trigger({
 $.add(trigger({
     OBJ_ID: 3602,
     SPAWN_TRIGGERED: true,
-    MULTI_TRIGGER: true,
+    MULTI_TRIGGER: false,
     GROUPS: [group(9527)],
     SFX_ID: 5327,
+    SFX_GROUP: 1,
     SONG_VOLUME: 0.5,
     SONG_START: 50,
     SONG_END: 100
