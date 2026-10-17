@@ -415,21 +415,123 @@ $.add(object({
     Z_ORDER: 100
 }));
 
-// Intro text
+// Intro text 1
 $.add(object({
     OBJ_ID: 914,
     DONT_FADE: true,
     DONT_ENTER: true,
     GLOW_DISABLED: true,
-    X: 3000,
-    Y: 3000,
+    X: 2681.75,
+    Y: 3267.75,
     SCALE_X: 0.875,
     SCALE_Y: 0.875,
     Z_LAYER: T4,
     Z_ORDER: 100,
     COLOR: color(1),
     GROUPS: [group(9525)],
-    TEXT: Buffer.from("Project: \"Notepad\"\n\n Description: Fiddle around with a 70-character notepad!\n\n\n\n\nThis level was made with G.js!\n\nMade by Elijah Wiencek on 2026-10-11\n\nView the source code at:\nhttps://github.com/burningmagma000/notepad/blob/main/index.js\n\n\n\n\nPress any valid input to continue").toString("base64")
+    TEXT: Buffer.from("Project: \"Notepad\"").toString("base64")
+}));
+
+// Intro text 2
+$.add(object({
+    OBJ_ID: 914,
+    DONT_FADE: true,
+    DONT_ENTER: true,
+    GLOW_DISABLED: true,
+    X: 2921.75,
+    Y: 3204.75,
+    SCALE_X: 0.875,
+    SCALE_Y: 0.875,
+    Z_LAYER: T4,
+    Z_ORDER: 100,
+    COLOR: color(1),
+    GROUPS: [group(9525)],
+    TEXT: Buffer.from("Description: Fiddle around with a 70-character notepad!").toString("base64")
+}));
+
+// Intro text 3
+$.add(object({
+    OBJ_ID: 914,
+    DONT_FADE: true,
+    DONT_ENTER: true,
+    GLOW_DISABLED: true,
+    X: 2741.75,
+    Y: 3047.25,
+    SCALE_X: 0.875,
+    SCALE_Y: 0.875,
+    Z_LAYER: T4,
+    Z_ORDER: 100,
+    COLOR: color(1),
+    GROUPS: [group(9525)],
+    TEXT: Buffer.from("This level was made with G.js!").toString("base64")
+}));
+
+// Intro text 4
+$.add(object({
+    OBJ_ID: 914,
+    DONT_FADE: true,
+    DONT_ENTER: true,
+    GLOW_DISABLED: true,
+    X: 2804,
+    Y: 2984.25,
+    SCALE_X: 0.875,
+    SCALE_Y: 0.875,
+    Z_LAYER: T4,
+    Z_ORDER: 100,
+    COLOR: color(1),
+    GROUPS: [group(9525)],
+    TEXT: Buffer.from("Made by Elijah Wiencek on 2026-10-11").toString("base64")
+}));
+
+// Intro text 5
+$.add(object({
+    OBJ_ID: 914,
+    DONT_FADE: true,
+    DONT_ENTER: true,
+    GLOW_DISABLED: true,
+    X: 2718,
+    Y: 2921.25,
+    SCALE_X: 0.875,
+    SCALE_Y: 0.875,
+    Z_LAYER: T4,
+    Z_ORDER: 100,
+    COLOR: color(1),
+    GROUPS: [group(9525)],
+    TEXT: Buffer.from("View the source code at:").toString("base64")
+}));
+
+// Intro text 6
+$.add(object({
+    OBJ_ID: 914,
+    DONT_FADE: true,
+    DONT_ENTER: true,
+    GLOW_DISABLED: true,
+    X: 3000,
+    Y: 2889.75,
+    SCALE_X: 0.875,
+    SCALE_Y: 0.875,
+    Z_LAYER: T4,
+    Z_ORDER: 100,
+    COLOR: color(1),
+    GROUPS: [group(9525)],
+    TEXT: Buffer.from("https://github.com/burningmagma000/notepad/blob/main/index.js").toString("base64")
+}));
+
+// Intro text 7
+$.add(object({
+    OBJ_ID: 914,
+    DONT_FADE: true,
+    DONT_ENTER: true,
+    GLOW_DISABLED: true,
+    X: 2770.25,
+    Y: 2732.25,
+    SCALE_X: 0.875,
+    SCALE_Y: 0.875,
+    Z_LAYER: T4,
+    Z_ORDER: 100,
+    COLOR: color(1),
+    GROUPS: [group(9525)],
+    TEXT: Buffer.from("Press any valid input to continue").toString("base64")
 }));
 
 // Making the texts invisible initially
@@ -2106,13 +2208,67 @@ $.add(trigger({
 
 
 
-// Instructions text
+// Instructions text 1
 $.add(object({
     OBJ_ID: 914,
     DONT_FADE: true,
     DONT_ENTER: true,
     GLOW_DISABLED: true,
-    X: 3000,
+    X: 2680.875,
+    Y: 3019,
+    SCALE_X: 1,
+    SCALE_Y: 1,
+    Z_LAYER: B4,
+    Z_ORDER: 100,
+    COLOR: color(1),
+    HVS_ENABLED: true,
+    HVS: hsv(0, 1, 0.25),
+    TEXT: Buffer.from("Instructions:").toString("base64")
+}));
+
+// Instructions text 2
+$.add(object({
+    OBJ_ID: 914,
+    DONT_FADE: true,
+    DONT_ENTER: true,
+    GLOW_DISABLED: true,
+    X: 2734.875,
+    Y: 2947,
+    SCALE_X: 1,
+    SCALE_Y: 1,
+    Z_LAYER: B4,
+    Z_ORDER: 100,
+    COLOR: color(1),
+    HVS_ENABLED: true,
+    HVS: hsv(0, 1, 0.25),
+    TEXT: Buffer.from("P1 Left - Backspace").toString("base64")
+}));
+
+// Instructions text 3
+$.add(object({
+    OBJ_ID: 914,
+    DONT_FADE: true,
+    DONT_ENTER: true,
+    GLOW_DISABLED: true,
+    X: 2707.875,
+    Y: 2911,
+    SCALE_X: 1,
+    SCALE_Y: 1,
+    Z_LAYER: B4,
+    Z_ORDER: 100,
+    COLOR: color(1),
+    HVS_ENABLED: true,
+    HVS: hsv(0, 1, 0.25),
+    TEXT: Buffer.from("P1 Right - Space").toString("base64")
+}));
+
+// Instructions text 4
+$.add(object({
+    OBJ_ID: 914,
+    DONT_FADE: true,
+    DONT_ENTER: true,
+    GLOW_DISABLED: true,
+    X: 2731.25,
     Y: 2875,
     SCALE_X: 1,
     SCALE_Y: 1,
@@ -2121,7 +2277,61 @@ $.add(object({
     COLOR: color(1),
     HVS_ENABLED: true,
     HVS: hsv(0, 1, 0.25),
-    TEXT: Buffer.from("Instructions:\n\nP1 Left - Backspace\nP1 Right - Space\nP1 Jump - Enter key\n\nP2 Left - Change to the preceding character\nP2 Right - Change to the following character\nP2 Jump - Finish the level (must wait at least 60 seconds!)").toString("base64")
+    TEXT: Buffer.from("P1 Jump - Enter key").toString("base64")
+}));
+
+// Instructions text 5
+$.add(object({
+    OBJ_ID: 914,
+    DONT_FADE: true,
+    DONT_ENTER: true,
+    GLOW_DISABLED: true,
+    X: 2913.125,
+    Y: 2803,
+    SCALE_X: 1,
+    SCALE_Y: 1,
+    Z_LAYER: B4,
+    Z_ORDER: 100,
+    COLOR: color(1),
+    HVS_ENABLED: true,
+    HVS: hsv(0, 1, 0.25),
+    TEXT: Buffer.from("P2 Left - Change to the preceding character").toString("base64")
+}));
+
+// Instructions text 6
+$.add(object({
+    OBJ_ID: 914,
+    DONT_FADE: true,
+    DONT_ENTER: true,
+    GLOW_DISABLED: true,
+    X: 2913.125,
+    Y: 2767,
+    SCALE_X: 1,
+    SCALE_Y: 1,
+    Z_LAYER: B4,
+    Z_ORDER: 100,
+    COLOR: color(1),
+    HVS_ENABLED: true,
+    HVS: hsv(0, 1, 0.25),
+    TEXT: Buffer.from("P2 Right - Change to the following character").toString("base64")
+}));
+
+// Instructions text 7
+$.add(object({
+    OBJ_ID: 914,
+    DONT_FADE: true,
+    DONT_ENTER: true,
+    GLOW_DISABLED: true,
+    X: 3000,
+    Y: 2731,
+    SCALE_X: 1,
+    SCALE_Y: 1,
+    Z_LAYER: B4,
+    Z_ORDER: 100,
+    COLOR: color(1),
+    HVS_ENABLED: true,
+    HVS: hsv(0, 1, 0.25),
+    TEXT: Buffer.from("P2 Jump - Finish the level (must wait at least 60 seconds!)").toString("base64")
 }));
 
 // "Notepad" by burningmagma text
